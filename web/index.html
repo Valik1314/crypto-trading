@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Binance Spot Trader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/app.css">
+  <script defer src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
+  <script defer src="/js/utils.js"></script>
+  <script defer src="/js/indicators.js"></script>
+  <script defer src="/js/chart.js"></script>
+  <script defer src="/js/recs.js"></script>
+  <script defer src="/js/portfolio.js"></script>
+  <script defer src="/js/ui.js"></script>
+</head>
+<body>
+  <h1>Binance Spot Trader</h1>
+
+  <div class="grid">
+    <div>
+      <div class="row">
+        <label>Торговая пара:
+          <input id="pairSearch" placeholder="поиск..." style="width:140px">
+          <select id="symbolSelect"></select>
+        </label>
+        <label>Таймфрейм:
+          <select id="interval">
+            <option>1m</option><option>5m</option><option>15m</option>
+            <option selected>1h</option><option>4h</option><option>1d</option>
+          </select>
+        </label>
+        <button id="load">График</button>
+        <button id="rec">Рекомендация</button>
+      </div>
+
+      <div class="row">
+        <label><input type="checkbox" id="chkCandles" checked> Свечи</label>
+        <label><input type="checkbox" id="chkEMA12" checked> EMA 12</label>
+        <label><input type="checkbox" id="chkEMA26" checked> EMA 26</label>
+        <label><input type="checkbox" id="chkRSI" checked> RSI</label>
+      </div>
+
+      <div id="chart" style="height:520px"></div>
+      <div id="rsiChart" style="height:160px; margin-top:10px"></div>
+
+      <pre id="recOut" class="mono"></pre>
+    </div>
+
+    <div>
+      <fieldset>
+        <legend>Риск и сделка (BUY → OCO SELL)</legend>
+        <div class="row">
+          <label>Сумма (USDT): <input id="quote" type="number" step="0.01" value="100"/></label>
+          <label>SL (%): <input id="slpct" type="number" step="0.01" value="1.0"/></label>
+          <label>TP (R): <input id="r" type="number" step="0.1" value="2.0"/></label>
+        </div>
+        <div class="row">
+          <button id="preview">Предпросмотр</button>
+          <button id="confirm">Подтвердить</button>
+          <button id="pf">Портфель</button>
+        </div>
+        <pre id="previewOut" class="mono"></pre>
+        <pre id="portfolioOut" class="mono"></pre>
+        <div id="status"></div>
+      </fieldset>
+      <small>API: <a href="/api/health" target="_blank">/api/health</a></small>
+    </div>
+  </div>
+</body>
+</html>
