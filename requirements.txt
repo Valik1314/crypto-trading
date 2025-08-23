@@ -3,3 +3,13 @@ uvicorn[standard]==0.30.6
 python-dotenv==1.0.1
 requests==2.32.3
 pydantic==2.8.2
+
+# Additional dependencies for the extended trading engine.  These
+# libraries provide access to exchange data, efficient numerical
+# computation, technical indicators and caching utilities.  Versions
+# are pinned to ensure reproducibility.
+ccxt==4.1.92
+pandas==2.2.2
+numpy==1.26.4
+pandas-ta==0.3.14b0
+joblib==1.3.2
